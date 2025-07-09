@@ -8,9 +8,9 @@ class ToggleFavoriteCoursesUseCase(
 ) {
     suspend operator fun invoke(course: Course) {
         if (course.hasLike) {
-            coursesRepository.addFavorite(course)
-        } else {
             coursesRepository.removeFavorite(course)
+        } else {
+            coursesRepository.addFavorite(course)
         }
     }
 }
