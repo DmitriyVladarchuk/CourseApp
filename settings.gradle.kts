@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "CourseApp"
 include(":app")
- 
+include(":data")
+include(":domain")
