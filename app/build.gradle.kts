@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.devtoolsKsp)
 }
 
 android {
@@ -51,14 +50,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.room.compiler)
-
-    ksp(libs.dagger.compiler)
-    implementation(libs.dagger)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
