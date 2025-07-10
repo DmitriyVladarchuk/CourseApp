@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.courseapp.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_main_nav"
+            app:destination="@id/main_nav"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/main_nav"
+        app:startDestination="@id/mainFragment">
+        <fragment
+            android:id="@+id/mainFragment"
+            android:name="com.example.courseapp.ui.main.MainFragment"
+            android:label="fragment_main"
+            tools:layout="@layout/fragment_main" />
+        <fragment
+            android:id="@+id/favoritesFragment"
+            android:name="com.example.courseapp.ui.favorite.FavoritesFragment"
+            android:label="fragment_favorites"
+            tools:layout="@layout/fragment_favorites" />
+        <fragment
+            android:id="@+id/accountFragment"
+            android:name="com.example.courseapp.ui.account.AccountFragment"
+            android:label="fragment_account"
+            tools:layout="@layout/fragment_account" />
+    </navigation>
 </navigation>
