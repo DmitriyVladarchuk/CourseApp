@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CoursesRepository {
     suspend fun getCourses(): Flow<List<Course>>
+    suspend fun getFavorites(): Flow<List<Course>>
     suspend fun addFavorite(course: Course)
     suspend fun removeFavorite(course: Course)
 }

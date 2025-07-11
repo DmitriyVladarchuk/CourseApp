@@ -10,7 +10,6 @@
     <string name="no_account">Нету аккаунта?</string>
     <string name="registration">Регистрация</string>
     <string name="forgot_password">Забыл пароль</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main">Главная</string>
     <string name="favorite">Избранное</string>
@@ -18,4 +17,8 @@
     <string name="more">Подробнее</string>
     <string name="search_courses">Search courses…</string>
     <string name="by_date_added">По дате добавления</string>
+
+    <string name="price_format">%d ₽</string>
+    <string name="favourites">Избранное</string>
+    <string name="profile">Профиль</string>
 </resources>

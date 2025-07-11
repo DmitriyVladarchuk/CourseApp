@@ -18,19 +18,16 @@ class CoursesRepositoryImpl(
 ) : CoursesRepository {
 
     override suspend fun getCourses(): Flow<List<Course>> {
-        // Загрузка данных из сети
         val networkFlow = flow {
             val response = api.getCourses()
             val courses = response.courses.map { it.toDomain() }
             emit(courses)
         }
 
-        // Загрузка избранных курсов
         val favoritesFlow = favoriteCourseDao.getAllFavorites().map { favorites ->
             favorites.map(CourseEntity::id)
         }
 
-        // Комбинируем данные
         return networkFlow.combine(favoritesFlow) { courses, favoriteIds ->
             courses.map { course ->
                 course.copy(hasLike = favoriteIds.contains(course.id))
@@ -38,8 +35,14 @@ class CoursesRepositoryImpl(
         }
     }
 
+    override suspend fun getFavorites(): Flow<List<Course>> {
+        return favoriteCourseDao.getAllFavorites().map { favorites ->
+            favorites.map(CourseEntity::toDomain)
+        }
+    }
+
     override suspend fun addFavorite(course: Course) {
-        favoriteCourseDao.insertFavorite(course.toEntity())
+        favoriteCourseDao.insertFavorite(course.copy(hasLike = true).toEntity())
     }
 
     override suspend fun removeFavorite(course: Course) {
