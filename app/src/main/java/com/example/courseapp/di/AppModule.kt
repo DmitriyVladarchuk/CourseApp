@@ -9,7 +9,9 @@ import com.example.courseapp.domain.repository.CoursesRepository
 import com.example.courseapp.domain.usecase.GetCoursesUseCase
 import com.example.courseapp.domain.usecase.ToggleFavoriteCoursesUseCase
 import com.example.courseapp.domain.usecase.ValidateEmailUseCase
+import com.example.courseapp.ui.main.MainViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
@@ -22,7 +24,7 @@ val appModule = module {
     // Room
     single<FavoriteCourseDao> {
         val database = DatabaseModule.provideDatabase(androidContext())
-        DatabaseModule.provideFavoriteDao(database)
+        DatabaseModule.provideFavoriteDao(courseDatabase = database)
     }
 
     // Repository
@@ -37,4 +39,13 @@ val appModule = module {
     factory { GetCoursesUseCase(coursesRepository = get()) }
     factory { ToggleFavoriteCoursesUseCase(coursesRepository = get()) }
     factory { ValidateEmailUseCase() }
+
+    // viewModel
+    viewModel {
+        MainViewModel(
+            getCoursesUseCase = get(),
+            toggleFavoriteUseCase = get()
+        )
+    }
+
 }

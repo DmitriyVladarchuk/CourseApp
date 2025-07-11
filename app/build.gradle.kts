@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.hannesdorfmann.adapterdelegates4.kotlin.dsl.viewbinding)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.koin.core)

@@ -1,4 +1,5 @@
 [versions]
+adapterdelegates4KotlinDslViewbindingVersion = "4.3.2"
 agp = "8.10.1"
 koin = "4.1.0"
 kotlin = "2.1.0"
@@ -22,6 +23,7 @@ navigationUiKtx = "2.9.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+hannesdorfmann-adapterdelegates4-kotlin-dsl-viewbinding = { module = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates4KotlinDslViewbindingVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
