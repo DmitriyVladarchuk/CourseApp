@@ -1,4 +1,4 @@
-package com.example.courseapp.ui.main.adapter
+package com.example.courseapp.ui.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter

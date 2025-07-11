@@ -35,8 +35,14 @@ class CoursesRepositoryImpl(
         }
     }
 
+    override suspend fun getFavorites(): Flow<List<Course>> {
+        return favoriteCourseDao.getAllFavorites().map { favorites ->
+            favorites.map(CourseEntity::toDomain)
+        }
+    }
+
     override suspend fun addFavorite(course: Course) {
-        favoriteCourseDao.insertFavorite(course.toEntity())
+        favoriteCourseDao.insertFavorite(course.copy(hasLike = true).toEntity())
     }
 
     override suspend fun removeFavorite(course: Course) {

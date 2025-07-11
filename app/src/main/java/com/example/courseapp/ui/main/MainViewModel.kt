@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class MainViewModel (
+class MainViewModel(
     private val getCoursesUseCase: GetCoursesUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteCoursesUseCase,
     private val sortCoursesByDateUseCase: SortCoursesByDateUseCase

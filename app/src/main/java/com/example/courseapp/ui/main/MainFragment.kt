@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.courseapp.databinding.FragmentMainBinding
-import com.example.courseapp.ui.main.adapter.CoursesAdapter
+import com.example.courseapp.ui.adapter.CoursesAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
