@@ -7,6 +7,7 @@ import com.example.courseapp.data.remote.api.RetrofitFactory
 import com.example.courseapp.data.repository.CoursesRepositoryImpl
 import com.example.courseapp.domain.repository.CoursesRepository
 import com.example.courseapp.domain.usecase.GetCoursesUseCase
+import com.example.courseapp.domain.usecase.SortCoursesByDateUseCase
 import com.example.courseapp.domain.usecase.ToggleFavoriteCoursesUseCase
 import com.example.courseapp.domain.usecase.ValidateEmailUseCase
 import com.example.courseapp.ui.main.MainViewModel
@@ -39,12 +40,14 @@ val appModule = module {
     factory { GetCoursesUseCase(coursesRepository = get()) }
     factory { ToggleFavoriteCoursesUseCase(coursesRepository = get()) }
     factory { ValidateEmailUseCase() }
+    factory { SortCoursesByDateUseCase() }
 
     // viewModel
     viewModel {
         MainViewModel(
             getCoursesUseCase = get(),
-            toggleFavoriteUseCase = get()
+            toggleFavoriteUseCase = get(),
+            sortCoursesByDateUseCase = get()
         )
     }
 

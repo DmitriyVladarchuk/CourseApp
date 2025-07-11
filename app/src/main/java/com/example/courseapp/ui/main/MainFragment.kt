@@ -31,8 +31,15 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupSortButton()
         setupRecyclerView()
         observeViewModel()
+    }
+
+    private fun setupSortButton() {
+        binding.btnSort.setOnClickListener {
+            viewModel.toggleSortByDate()
+        }
     }
 
     private fun setupRecyclerView() {

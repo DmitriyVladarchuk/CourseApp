@@ -17,4 +17,6 @@
     <string name="more">Подробнее</string>
     <string name="search_courses">Search courses…</string>
     <string name="by_date_added">По дате добавления</string>
+
+    <string name="price_format">%d ₽</string>
 </resources>
