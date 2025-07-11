@@ -20,4 +20,5 @@
 
     <string name="price_format">%d ₽</string>
     <string name="favourites">Избранное</string>
+    <string name="profile">Профиль</string>
 </resources>
