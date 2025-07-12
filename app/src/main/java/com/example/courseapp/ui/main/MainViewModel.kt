@@ -21,6 +21,7 @@ class MainViewModel(
     val coursesState: StateFlow<List<Course>> = _coursesState
 
     private var isSortedDescending = false
+    private var originalCourses = listOf<Course>()
 
     init {
         loadCourses()
@@ -29,6 +30,10 @@ class MainViewModel(
     fun toggleFavorite(course: Course) {
         viewModelScope.launch {
             toggleFavoriteUseCase(course)
+            if (isSortedDescending) {
+                loadCourses()
+                _coursesState.value = sortCoursesByDateUseCase(_coursesState.value)
+            }
         }
     }
 
@@ -36,15 +41,23 @@ class MainViewModel(
         viewModelScope.launch {
             isSortedDescending = !isSortedDescending
             if (isSortedDescending) {
+                originalCourses = _coursesState.value
                 _coursesState.value = sortCoursesByDateUseCase(_coursesState.value)
-            } else { loadCourses() }
+            } else {
+                _coursesState.value = originalCourses
+            }
         }
     }
 
     private fun loadCourses() {
         viewModelScope.launch {
             getCoursesUseCase().collectLatest { courses ->
-                _coursesState.value = courses
+                originalCourses = courses
+                _coursesState.value = if (isSortedDescending) {
+                    sortCoursesByDateUseCase(courses)
+                } else {
+                    courses
+                }
             }
         }
     }

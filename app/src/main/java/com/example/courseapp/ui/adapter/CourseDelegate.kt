@@ -45,7 +45,7 @@ class CourseDelegate(
 
         fun bind(course: Course) {
             with(binding) {
-                customImageView.setImageResource(getCourseImageResource(bindingAdapterPosition))
+                customImageView.setImageResource(getCourseImageResource(course.id.toInt()))
                 tvTitle.text = course.title
                 tvText.text = course.text
                 tvPrice.text = "${course.price} ₽"
@@ -69,11 +69,11 @@ class CourseDelegate(
          *
          * Все что смог придумать)
          */
-        private fun getCourseImageResource(position: Int): Int {
-            return when (position % 3) {
-                0 -> R.drawable.ic_course_1
-                1 -> R.drawable.ic_course_2
-                2 -> R.drawable.ic_course_3
+        private fun getCourseImageResource(courseId: Int): Int {
+            return when (courseId % 3) {
+                0 -> R.drawable.ic_course_3
+                1 -> R.drawable.ic_course_1
+                2 -> R.drawable.ic_course_2
                 else -> R.drawable.ic_course_1
             }
         }
